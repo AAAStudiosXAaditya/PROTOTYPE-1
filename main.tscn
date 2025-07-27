@@ -1,6 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dm47hogt3gagn"]
+[gd_scene load_steps=11 format=3 uid="uid://dm47hogt3gagn"]
 
 [ext_resource type="Texture2D" uid="uid://cqrtx2k1r65pu" path="res://citrus_orchard_road_puresky_4k.exr" id="1_ig7tw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
+albedo_color = Color(0.0430392, 0.0430392, 0.0430392, 1)
+metallic = 0.45
+metallic_specular = 0.93
+emission_enabled = true
+anisotropy = 1.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7dm0k"]
 
@@ -8,6 +15,11 @@
 size = Vector3(2, 0.00537109, 1.50107)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7dm0k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
+shading_mode = 2
+albedo_color = Color(0.878226, 0.188845, 0, 1)
+roughness = 0.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ig7tw"]
 radius = 0.529829
@@ -30,6 +42,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15235, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Surface"]
 transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, -2.57508, 0, 0)
+material_override = SubResource("StandardMaterial3D_0xm2m")
 mesh = SubResource("PlaneMesh_7dm0k")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Surface/MeshInstance3D"]
@@ -43,6 +56,7 @@ shape = SubResource("BoxShape3D_0xm2m")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Capsule"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.936948, 0)
 mesh = SubResource("CapsuleMesh_7dm0k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ig7tw")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Capsule/MeshInstance3D"]
 
