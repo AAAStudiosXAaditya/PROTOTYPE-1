@@ -11,5 +11,29 @@ config_version=5
 [application]
 
 config/name="GODOT PROTO-1"
+run/main_scene="uid://dm47hogt3gagn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[input]
+
+move_forward={
+"deadzone": 0.5,
+"events": []
+}
+move_backward={
+"deadzone": 0.5,
+"events": []
+}
+move_left={
+"deadzone": 0.5,
+"events": []
+}
+move_right={
+"deadzone": 0.5,
+"events": []
+}
+jump={
+"deadzone": 0.5,
+"events": []
+}

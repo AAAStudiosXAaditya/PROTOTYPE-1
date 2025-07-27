@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dm47hogt3gagn"]
+[gd_scene load_steps=9 format=3 uid="uid://dm47hogt3gagn"]
 
-[ext_resource type="Texture2D" uid="uid://cqrtx2k1r65pu" path="res://citrus_orchard_road_puresky_4k.exr" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://cqrtx2k1r65pu" path="res://World/citrus_orchard_road_puresky_4k.exr" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://colg38myfu7iy" path="res://Character/character_body_3d.tscn" id="2_0xm2m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
 albedo_color = Color(0.0430392, 0.0430392, 0.0430392, 1)
@@ -13,17 +14,6 @@ anisotropy = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0xm2m"]
 size = Vector3(2, 0.00537109, 1.50107)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_7dm0k"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
-shading_mode = 2
-albedo_color = Color(0.878226, 0.188845, 0, 1)
-roughness = 0.0
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ig7tw"]
-radius = 0.529829
-height = 2.04019
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_h2yge"]
 panorama = ExtResource("1_ig7tw")
@@ -51,17 +41,7 @@ mesh = SubResource("PlaneMesh_7dm0k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000732422, 0.250534)
 shape = SubResource("BoxShape3D_0xm2m")
 
-[node name="Capsule" type="Node3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Capsule"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.936948, 0)
-mesh = SubResource("CapsuleMesh_7dm0k")
-surface_material_override/0 = SubResource("StandardMaterial3D_ig7tw")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Capsule/MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Capsule/MeshInstance3D/StaticBody3D"]
-shape = SubResource("CapsuleShape3D_ig7tw")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lquwl")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_0xm2m")]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://colg38myfu7iy"]
+
+[ext_resource type="Script" uid="uid://dl47odkbm4oas" path="res://Character/fps_controller.gd" id="1_n73jj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6852l"]
+radius = 0.55
+height = 2.1
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_n7ghw"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_n73jj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06896, 0)
+shape = SubResource("CapsuleShape3D_6852l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_n7ghw")
+
+[node name="Camera Controller" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73675, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Camera Controller"]
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Camera Controller/Camera3D"]
