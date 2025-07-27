@@ -1,12 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjobpj2gquj01"]
+[gd_scene load_steps=9 format=3 uid="uid://bjobpj2gquj01"]
+
+[ext_resource type="Texture2D" uid="uid://cqrtx2k1r65pu" path="res://citrus_orchard_road_puresky_4k.exr" id="1_ig7tw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7dm0k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xm2m"]
+size = Vector3(2, 0.00537109, 1.50107)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7dm0k"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ig7tw"]
 radius = 0.529829
 height = 2.04019
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_h2yge"]
+panorama = ExtResource("1_ig7tw")
+
+[sub_resource type="Sky" id="Sky_1bvp3"]
+sky_material = SubResource("PanoramaSkyMaterial_h2yge")
+
+[sub_resource type="Environment" id="Environment_lquwl"]
+background_mode = 2
+sky = SubResource("Sky_1bvp3")
 
 [node name="Shape" type="Node3D"]
 
@@ -17,13 +32,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15235, 0, 0)
 transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, -2.57508, 0, 0)
 mesh = SubResource("PlaneMesh_7dm0k")
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="Surface/MeshInstance3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Surface/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000732422, 0.250534)
+shape = SubResource("BoxShape3D_0xm2m")
+
+[node name="Capsule" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Capsule"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.936948, 0)
 mesh = SubResource("CapsuleMesh_7dm0k")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Capsule/MeshInstance3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Capsule/MeshInstance3D/StaticBody3D"]
 shape = SubResource("CapsuleShape3D_ig7tw")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lquwl")
