@@ -1,9 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjobpj2gquj01"]
+[gd_scene load_steps=3 format=3 uid="uid://bjobpj2gquj01"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7dm0k"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_7dm0k"]
+
 [node name="Shape" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Capsule" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.777187, 0)
 mesh = SubResource("CapsuleMesh_7dm0k")
+
+[node name="Surface" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15235, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Surface"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -2.57508, 0, 0)
+mesh = SubResource("PlaneMesh_7dm0k")
