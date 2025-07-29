@@ -1,8 +1,26 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=3 format=3 uid="uid://bjobpj2gquj01"]
+=======
+[gd_scene load_steps=8 format=3 uid="uid://bjobpj2gquj01"]
+
+[ext_resource type="Texture2D" uid="uid://d2lnqd5ih03ke" path="res://citrus_orchard_road_puresky_4k.exr" id="1_ig7tw"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7dm0k"]
+>>>>>>> Stashed changes
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7dm0k"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7dm0k"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ig7tw"]
+panorama = ExtResource("1_ig7tw")
+
+[sub_resource type="Sky" id="Sky_0xm2m"]
+sky_material = SubResource("PanoramaSkyMaterial_ig7tw")
+
+[sub_resource type="Environment" id="Environment_h2yge"]
+background_mode = 2
+sky = SubResource("Sky_0xm2m")
 
 [node name="Shape" type="Node3D"]
 
@@ -16,3 +34,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15235, 0, 0)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Surface"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -2.57508, 0, 0)
 mesh = SubResource("PlaneMesh_7dm0k")
+<<<<<<< Updated upstream
+=======
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.936948, 0)
+mesh = SubResource("CapsuleMesh_7dm0k")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/StaticBody3D"]
+shape = SubResource("CapsuleShape3D_ig7tw")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_h2yge")
+>>>>>>> Stashed changes
