@@ -26,6 +26,7 @@ background_mode = 2
 sky = SubResource("Sky_1bvp3")
 
 [node name="Shape" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0866084, 0, 0)
 
 [node name="Surface" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15235, 0, 0)
